@@ -1,0 +1,7 @@
+{
+  "name": "onBarber",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
