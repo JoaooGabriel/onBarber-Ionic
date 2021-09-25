@@ -1,6 +1,7 @@
 <ion-content>
-  <div>
-    <h2>Olá, Bem-vindo ao OnBarber!</h2>
+  <div class="welcome-container">
+    <h1 class="title">onBarber</h1>
+    <img class="logo" src="../../../assets/logo.png" alt="logo">
   </div>
   <ion-tabs>
     <ion-tab-bar slot="bottom">
@@ -8,6 +9,10 @@
       <ion-tab-button tab="login">
         <ion-icon name="log-in-outline"></ion-icon>
         <ion-label>Login</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="register">
+        <ion-icon class="register-button" name="person-add-outline"></ion-icon>
+        <ion-label>Crie uma conta</ion-label>
       </ion-tab-button>
 
     </ion-tab-bar>
