@@ -6,11 +6,11 @@
 
     <div class="login-form-content">
       <div class="login-input-form">
-        <ion-input class="input-email" type="text" placeholder="E-mail" (ionChange)="setEmail($event)">
+        <ion-input class="input-email" type="text" placeholder="E-mail" name="email" [(ngModel)]="user.email">
         </ion-input>
 
         <ion-input class="input-password" type="{{inputPassword.inputType}}" placeholder="Senha"
-          (ionChange)="setPassword($event)">
+          name="password" [(ngModel)]="user.password">
         </ion-input>
 
         <span (click)="isPasswordVisible(inputPassword.visible)">
