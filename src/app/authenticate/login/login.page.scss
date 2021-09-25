@@ -1,0 +1,120 @@
+ion-content {
+  height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  .login-logo-content {
+    .logo {
+      height: 250px;
+
+      margin-bottom: 2rem;
+    }
+  }
+
+  .login-form-content {
+    .login-input-form {
+      .input-email {
+        width: 18rem;
+
+        :focus {
+          border: 2px solid var(--border-focus);
+        }
+      }
+
+      .input-password {
+        width: 18rem;
+
+        margin-top: 0.5rem;
+
+        position: relative; 
+
+        :focus {
+          border: 2px solid var(--border-focus);
+        }
+      }
+
+      .content-eye-login {
+        height: 20px;
+        width: 20px;
+
+        color: var(--white);
+
+        cursor: pointer;
+
+        position: absolute;
+
+        margin-top: -32px;
+        margin-left: 255px;
+        z-index: 2;
+      }
+    }
+
+    .login-button-form {
+      .button {
+        width: 10rem;
+
+        background: var(--brown);
+
+        // padding: 20px;
+
+        margin: 1rem;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        opacity: 0.75;
+
+        text-transform: uppercase;
+
+        :hover {
+          opacity: 1;
+
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}
+
+ion-input {
+  height: 46px;
+
+  background: var(--gray);
+
+  color: var(--white);
+
+  padding: 20px;
+
+  font-size: 14px;
+
+  ::placeholder {
+    text-align: flex-start;
+
+    font-size: 16px;
+  }
+
+  border: 2px solid var(--black);
+  border-radius: 8px;
+
+  outline: none;
+}
+
+ion-button {
+  height: 50px;
+
+  color: var(--white);
+
+  outline: none;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+}

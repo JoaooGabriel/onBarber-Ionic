@@ -1,0 +1,33 @@
+<ion-content id="login-content">
+  <div class="login-logo-content">
+    <img class="logo" src="../../../assets/logo.png" alt="Logo OnBaber">
+  </div>
+
+  <div class="login-form-content">
+    <div class="login-input-form">
+      <ion-input
+        class="input-email"
+        type="text"
+        placeholder="E-mail"
+        (ionChange)="setEmail($event)">
+      </ion-input>
+      
+      <ion-input 
+        class="input-password"
+        type="{{inputPassword.inputType}}"
+        placeholder="Senha"
+        (ionChange)="setPassword($event)">
+      </ion-input>
+      
+      <span (click)="isPasswordVisible(inputPassword.visible)">
+        <ion-icon class="content-eye-login" name={{inputPassword.passwordEyeIcon}}></ion-icon>
+      </span>
+    </div>
+
+    <div class="login-button-form">
+      <ion-button class="button" (click)="login()">
+        ENTRAR
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
