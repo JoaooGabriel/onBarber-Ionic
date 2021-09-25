@@ -1,12 +1,14 @@
 ion-content {
-  height: 100vh;
+  .login-content {
+    height: 100vh;
 
-  display: flex;
+    display: flex;
 
-  flex-direction: column;
+    flex-direction: column;
 
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
+  }
 
   .login-logo-content {
     .logo {
@@ -31,7 +33,7 @@ ion-content {
 
         margin-top: 0.5rem;
 
-        position: relative; 
+        position: relative;
 
         :focus {
           border: 2px solid var(--border-focus);
@@ -55,6 +57,13 @@ ion-content {
     }
 
     .login-button-form {
+      display: flex;
+
+      flex-direction: column;
+  
+      align-items: center;
+      justify-content: center;
+      
       .button {
         width: 10rem;
 
