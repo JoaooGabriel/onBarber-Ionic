@@ -8,9 +8,14 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'authenticate',
     pathMatch: 'full'
   },
+  {
+    path: 'authenticate',
+    loadChildren: () => import('./authenticate/authenticate.module').then( m => m.AuthenticatePageModule)
+  },
+
 ];
 
 @NgModule({
