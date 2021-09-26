@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="register-page">
+    <div class="logo-container">
+      <img class="logo" src="../../../assets/logo.png" alt="onBarber logo">
+    </div>
+
+    <div class="register-form-content">
+      <h1>Cadastre-se</h1>
+      <div class="register-input-form">
+        <ion-input class="default-input" type="text" placeholder="Nome completo" name="fullName"
+          [(ngModel)]="user.name">
+        </ion-input>
+
+        <ion-input class="default-input" type="text" placeholder="Telefone" name="phone" [(ngModel)]="user.phone">
+        </ion-input>
+
+        <ion-input class="input-city" type="text" placeholder="Cidade" name="city" [(ngModel)]="user.city">
+        </ion-input>
+
+        <ion-input class="default-input" type="text" placeholder="E-mail" name="email" [(ngModel)]="user.email">
+        </ion-input>
+
+        <ion-input class="default-input" type="{{inputPassword.inputType}}" placeholder="Senha" name="password"
+          [(ngModel)]="user.password">
+        </ion-input>
+
+        <span (click)="isPasswordVisible(inputPassword.visible)">
+          <ion-icon class="content-eye-login" name={{inputPassword.passwordEyeIcon}}></ion-icon>
+        </span>
+      </div>
+
+      <div class="buttons">
+        <ion-button class="register-button" (click)="login()" color="success" strong="true">
+          Criar conta
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

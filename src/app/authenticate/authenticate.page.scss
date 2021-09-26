@@ -1,0 +1,22 @@
+ion-content {
+  .welcome-container {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  .welcome-container .title {
+    font-size: 2.4rem;
+
+    padding: 1.6rem;
+  }
+
+  .welcome-container .logo {
+    width: 10rem;
+    margin-bottom: 100px;
+  }
+}
