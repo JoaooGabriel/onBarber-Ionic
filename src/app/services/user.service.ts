@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 export interface IUser {
   id: string;
   name: string;
@@ -10,20 +12,20 @@ export interface IUser {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private users: IUser[] = [
     {
       id: 'ff8feb01-76c3-41dd-a1ae-9933974ed7b4',
       name: 'Test',
-      email: 'test.email@gmail.com',
       phone: '+5511999999999',
       city: 'São Paulo',
-      password: 'test1234'
-    }
+      email: 'test.email@gmail.com',
+      password: 'test1234',
+    },
   ];
-  constructor() { }
+  constructor(private router: Router) {}
 
   public init(): IUser {
     return {
@@ -32,7 +34,7 @@ export class UserService {
       email: '',
       phone: '',
       city: '',
-      password: ''
+      password: '',
     };
   }
 
@@ -41,12 +43,33 @@ export class UserService {
   }
 
   public find(userId: string): IUser {
-    return { ...this.users.find((u) => u.id === userId)};
+    return { ...this.users.find((u) => u.id === userId) };
   }
 
   public login(email: string, password: string): IUser {
-    const user = this.users.find((u) => u.email === email && u.password === password);
+    const user = this.users.find(
+      (u) => u.email === email && u.password === password
+    );
 
     return user;
+  }
+
+  public store(user: IUser) {
+    const userExists = this.users.find(
+      (u) => u.email === user.email && u.phone === user.phone
+    );
+
+    if (userExists) {
+      alert('Este usuário já existe!');
+      throw Error('Este usuário já existe!');
+    }
+
+    this.users.push(user);
+
+    return user;
+  }
+
+  public navigate(path: string) {
+    this.router.navigate([path]);
   }
 }

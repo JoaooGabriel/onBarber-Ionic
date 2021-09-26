@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser, UserService } from './../../services/user.service';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-register',
@@ -32,5 +33,26 @@ export class RegisterPage implements OnInit {
       this.inputPassword.passwordEyeIcon = 'eye-off-outline';
       this.inputPassword.inputType = 'password';
     }
+  }
+
+  register() {
+    if (
+      !this.user.name ||
+      !this.user.phone ||
+      !this.user.city ||
+      !this.user.email ||
+      !this.user.password
+    ) {
+      alert('Por favor, preencha todos os campos!');
+      throw Error('Por favor, preencha todos os campos!');
+    }
+
+    this.user.id = uuid();
+
+    const user = this.userService.store(this.user);
+
+    alert('Usuário criado com sucesso!');
+
+    this.userService.navigate('/authenticate/login');
   }
 }
