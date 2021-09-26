@@ -39,6 +39,7 @@ export class LoginPage implements OnInit {
     const result = this.userService.login(email, password);
 
     if (!result) {
+      alert('E-mail ou senha inválidos!');
       throw Error('E-mail ou senha inválidos!');
     }
 

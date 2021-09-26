@@ -36,6 +36,10 @@ export class UserService {
     };
   }
 
+  public findAll(): Readonly<Array<Readonly<IUser>>> {
+    return this.users;
+  }
+
   public find(userId: string): IUser {
     return { ...this.users.find((u) => u.id === userId)};
   }
