@@ -5,6 +5,7 @@ export interface IUser {
   name: string;
   email: string;
   phone: string;
+  city: string;
   password: string;
 }
 
@@ -18,6 +19,7 @@ export class UserService {
       name: 'Test',
       email: 'test.email@gmail.com',
       phone: '+5511999999999',
+      city: 'São Paulo',
       password: 'test1234'
     }
   ];
@@ -29,6 +31,7 @@ export class UserService {
       name: '',
       email: '',
       phone: '',
+      city: '',
       password: ''
     };
   }
