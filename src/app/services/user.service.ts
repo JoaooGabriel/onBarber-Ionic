@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { Router } from '@angular/router';
 
 export interface IUser {
@@ -25,6 +24,8 @@ export class UserService {
       password: 'test1234',
     },
   ];
+
+  private loggedUser: IUser;
   constructor(private router: Router) {}
 
   public init(): IUser {
@@ -46,12 +47,31 @@ export class UserService {
     return { ...this.users.find((u) => u.id === userId) };
   }
 
+  public findLoggedUser(): IUser {
+    return this.loggedUser;
+  }
+
   public login(email: string, password: string): IUser {
     const user = this.users.find(
       (u) => u.email === email && u.password === password
     );
 
+    if (!user) {
+      alert('E-mail ou senha inválidos!');
+      throw Error('E-mail ou senha inválidos!');
+    }
+
+    this.loggedUser = user;
+
+    alert('Autenticado com sucesso!');
+
     return user;
+  }
+
+  public logout() {
+    this.loggedUser = null;
+
+    this.navigate('/authenticate/login');
   }
 
   public store(user: IUser) {
@@ -65,6 +85,8 @@ export class UserService {
     }
 
     this.users.push(user);
+
+    alert('Usuário criado com sucesso!');
 
     return user;
   }
