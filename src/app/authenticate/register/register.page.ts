@@ -48,11 +48,7 @@ export class RegisterPage implements OnInit {
     }
 
     this.user.id = uuid();
-
-    const user = this.userService.store(this.user);
-
-    alert('Usuário criado com sucesso!');
-
+    this.userService.store(this.user);
     this.userService.navigate('/authenticate/login');
   }
 }
