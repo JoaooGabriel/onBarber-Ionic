@@ -82,4 +82,16 @@ ion-content {
     height: 40px;
     width: 130px;
   }
+
+  // RESPONSIVIDADE
+  @media screen and (max-width: 850px) {
+    .register-page {
+      flex-direction: column;
+    }
+
+    .logo-container .logo {
+      margin-right: 0px;
+      margin-bottom: 50px;
+    }
+  }
 }
