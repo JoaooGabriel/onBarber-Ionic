@@ -1,61 +1,61 @@
-ion-header {
-  height: 100px;
-
-  background-color: var(--dark-gray);
-
-  display: flex;
-
-  justify-content: space-between;
-  align-items: center;
-
-  .header-profile {
-    display: flex;
-
-    align-items: center;
-
-    margin: 0 2rem;
-
-    .header-profile-image {
-      width: 80px;
-
-      border: 2px solid var(--white);
-      border-radius: 50%;
-    }
-
-    .header-profile-title {
-      font-size: 1.2rem;
-
-      color: var(--white);
-
-      margin-top: 1.5rem;
-
-      margin-left: 1.2rem;
-    }
-  }
-
-  .header-logout {
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    margin: 0 2rem;
-
-    .header-logout-button {
-      margin: 0 1rem;
-
-      padding: 0px 40px 0px 10px;
-
-      position: relative;
-
-      color: var(--white);
-
-      text-transform: uppercase;
-    }
-  }
-}
-
 ion-content {
+  .header {
+    height: 100px;
+
+    background-color: var(--dark-gray);
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    .header-profile {
+      display: flex;
+
+      align-items: center;
+
+      margin: 0 2rem;
+
+      .header-profile-image {
+        width: 80px;
+
+        border: 2px solid var(--white);
+        border-radius: 50%;
+      }
+
+      .header-profile-title {
+        font-size: 1.2rem;
+
+        color: var(--white);
+
+        margin-top: 1.5rem;
+
+        margin-left: 1.2rem;
+      }
+    }
+
+    .header-logout {
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      margin: 0 2rem;
+
+      .header-logout-button {
+        margin: 0 1rem;
+
+        padding: 0px 40px 0px 10px;
+
+        position: relative;
+
+        color: var(--white);
+
+        text-transform: uppercase;
+      }
+    }
+  }
+
   .content {
     height: 60vh;
     width: 80%;
@@ -94,7 +94,7 @@ ion-content {
           background: var(--dark-gray);
 
           cursor: pointer;
-          
+
           .content-header-card-icon {
             height: 22px;
             width: 22px;
