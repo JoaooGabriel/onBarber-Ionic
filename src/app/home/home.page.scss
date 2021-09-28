@@ -1,4 +1,9 @@
 ion-content {
+  ion-tab-button {
+    --background-focused: var(--main);
+    --color-selected: var(--main);
+  }
+
   .header {
     height: 100px;
 
@@ -57,7 +62,7 @@ ion-content {
   }
 
   .content {
-    height: 60vh;
+    height: 100%;
     width: 80%;
 
     display: flex;
