@@ -1,0 +1,79 @@
+<ion-content>
+  <div class="header">
+    <div class="header-profile">
+      <img
+        class="header-profile-image"
+        src="../../assets/avatar.jpg"
+        alt="Foto de perfil"
+      />
+    </div>
+
+    <div class="header-logout">
+      <ion-button
+        type="submit"
+        class="header-logout-button"
+        color="warning"
+        (click)="goHome()"
+      >
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-title">
+      <ion-title class="title">Selecione o dia e o horário:</ion-title>
+    </div>
+
+    <div class="content-form">
+      <div class="content-form-input">
+        <ion-input class="form-schedule-input" type="date"> </ion-input>
+
+        <ion-input class="form-schedule-input" type="time"> </ion-input>
+      </div>
+
+      <div class="content-form-barber">
+        <ion-title class="barber-title">Selecione o Barbeiro:</ion-title>
+        <div class="form-barber-description">
+          <button class="form-barber-card">
+            <div class="barber-card-title">
+              <ion-title class="card-title">João Gabriel Caetano</ion-title>
+            </div>
+            <div class="barber-card-description">
+              <img class="card-image" src="../../../assets/avatar.jpg" alt="Foto Funcionário" />
+            </div>
+          </button>
+
+          <button class="form-barber-card">
+            <div class="barber-card-title">
+              <ion-title class="card-title">Tiago Turola</ion-title>
+            </div>
+            <div class="barber-card-description">
+              <img class="card-image" src="../../../assets/avatar.jpg" alt="Foto Funcionário" />
+            </div>
+          </button>
+
+          <button class="form-barber-card">
+            <div class="barber-card-title">
+              <ion-title class="card-title">Felippe Vilas Boas</ion-title>
+            </div>
+            <div class="barber-card-description">
+              <img class="card-image" src="../../../assets/avatar.jpg" alt="Foto Funcionário" />
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="content-form-button">
+        <ion-button
+          type="submit"
+          class="form-register-button"
+          color="success"
+          (click)="save()"
+        >
+          Finalizar
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
