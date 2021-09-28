@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { IUser, UserService } from './../../services/user.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginPage implements OnInit {
     inputType: 'password'
   };
   public user: IUser;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private navController: NavController) { }
 
   ngOnInit() {
     this.user = this.userService.init();
@@ -34,15 +35,18 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    const email = this.user.email;
-    const password = this.user.password;
-    const result = this.userService.login(email, password);
-
-    if (!result) {
-      alert('E-mail ou senha inválidos!');
-      throw Error('E-mail ou senha inválidos!');
+    if (
+      !this.user.email ||
+      !this.user.password
+    ) {
+      alert('Por favor, preencha todos os campos!');
+      throw Error('Por favor, preencha todos os campos!');
     }
 
-    alert('Autenticado com sucesso!');
+    const user = this.userService.login(this.user.email, this.user.password);
+
+    this.userService.navigate('/home');
+
+    return user;
   }
 }
