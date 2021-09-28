@@ -21,7 +21,7 @@ ion-content {
   .login-form-content {
     .login-input-form {
       .input-email {
-        width: 18rem;
+        width: 20rem;
 
         :focus {
           border: 2px solid var(--border-focus);
@@ -29,7 +29,7 @@ ion-content {
       }
 
       .input-password {
-        width: 18rem;
+        width: 20rem;
 
         margin-top: 0.5rem;
 
@@ -50,8 +50,8 @@ ion-content {
 
         position: absolute;
 
-        margin-top: -32px;
-        margin-left: 255px;
+        margin-top: -33px;
+        margin-left: 290px;
         z-index: 2;
       }
     }
@@ -85,14 +85,14 @@ ion-content {
 
 ion-input {
   height: 46px;
-
+  
   background: var(--gray);
 
   color: var(--white);
 
   padding: 20px;
 
-  font-size: 14px;
+  font-size: 16px;
 
   ::placeholder {
     text-align: flex-start;
