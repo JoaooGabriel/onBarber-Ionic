@@ -6,7 +6,16 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
-  }
+    children: [
+      {
+        path: ''
+      },
+      {
+        path: 'schedule',
+        loadChildren: () => import('./schedule/schedule.module').then( m => m.SchedulePageModule)
+      }
+    ]
+  },
 ];
 
 @NgModule({
