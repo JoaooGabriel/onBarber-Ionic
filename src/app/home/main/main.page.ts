@@ -9,9 +9,10 @@ import { IUser, UserService } from 'src/app/services/user.service';
 })
 export class MainPage implements OnInit {
   public user: IUser;
-  public schedules: ISchedule[] = this.findAll();
+  public schedules: ISchedule[];
   constructor(private userService: UserService, private scheduleService: ScheduleService) {
     this.getLoggedUser();
+    this.schedules = this.findAll();
   }
 
   ngOnInit() {

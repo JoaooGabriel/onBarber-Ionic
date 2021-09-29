@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { format } from 'date-fns';
 
 export interface ISchedule{
   id: string;
   day: string;
   hour: string;
   barberName: string;
+  userId: string;
 }
 
 export interface IBarber {
@@ -38,13 +40,16 @@ export class ScheduleService {
       id: '',
       day: '',
       hour: '',
-      barberName: ''
+      barberName: '',
+      userId: ''
     };
   }
 
   public delete(scheduleId: string) {
     if (this.schedules.length === 1) {
       this.schedules = [];
+
+      return this.schedules;
     }
 
     const indexSchedules = this.schedules.findIndex((schedule) => schedule.id === scheduleId );
@@ -59,14 +64,21 @@ export class ScheduleService {
     throw Error('Ocorreu um erro ao executar a operação!');
   }
 
-  public store(schedule: ISchedule){
+  public store(schedule: ISchedule) {
+    schedule.day = format(new Date(schedule.day), 'dd/MM/yyyy');
     this.schedules.push(schedule);
+
+    console.log(schedule);
 
     return this.schedules;
   }
 
-  public findAll(){
+  public findAll() {
     return this.schedules;
+  }
+
+  public async findAllScheduleByLoggedUser(userId: string) {
+    return this.schedules.filter((schedule) => schedule.userId === userId);
   }
 
   public findAllBarbers() {
