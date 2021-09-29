@@ -1,46 +1,11 @@
-<ion-content [fullscreen]="true">
-  <div class="header">
-    <div class="header-profile">
-      <img class="header-profile-image" src="../../assets/avatar.jpg" alt="Foto de perfil">
-      <ion-title class="header-profile-title">Bem vindo(a), user</ion-title>
-    </div>
-
-    <div class="header-logout">
-      <ion-button type="submit" class="header-logout-button" color="danger" (click)="logout()">
-        <ion-icon class="header-logout-icon" name="log-out-outline"></ion-icon>
-      </ion-button>
-    </div>
-  </div>
-  <div class="content">
-    <div class="content-card" *ngFor="let schedule of schedules">
-      <div class="content-header-card">
-        <button type="button" (click)="delete(schedule.id)">
-          <ion-icon class="content-header-card-icon" name="trash-outline"></ion-icon>
-        </button>
-      </div>
-
-      <div class="description-card">
-        <div class="description-card-day">
-          <p>
-            Dia: <span class="card-day">{{schedule.day}}</span>
-          </p>
-        </div>
-        <div class="description-card-hour">
-          <p>
-            Hora: <span class="card-hour">{{schedule.hour}}</span>
-          </p>
-        </div>
-        <div class="description-card-barber-name">
-          <p>
-            Agendado com: <span class="card-barber-name">{{schedule.barberName}}</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<ion-content>
   <ion-tabs>
     <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="main">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+      
       <ion-tab-button tab="schedule">
         <ion-icon name="calendar-outline"></ion-icon>
         <ion-label>Agendamento</ion-label>
