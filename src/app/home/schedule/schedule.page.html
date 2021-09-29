@@ -27,15 +27,15 @@
 
     <div class="content-form">
       <div class="content-form-input">
-        <ion-input class="form-schedule-input" type="date"> </ion-input>
+        <ion-input class="form-schedule-input" type="date" [(ngModel)]="schedule.day" > </ion-input>
 
-        <ion-input class="form-schedule-input" type="time"> </ion-input>
+        <ion-input class="form-schedule-input" type="time" [(ngModel)]="schedule.hour"> </ion-input>
       </div>
 
       <div class="content-form-barber">
         <ion-title class="barber-title">Selecione o Barbeiro:</ion-title>
         <div class="form-barber-description">
-          <button class="form-barber-card">
+          <button class="form-barber-card" (click)="getBarberName('Joao Gabriel Caetano')">
             <div class="barber-card-title">
               <ion-title class="card-title">João Gabriel Caetano</ion-title>
             </div>
@@ -44,7 +44,7 @@
             </div>
           </button>
 
-          <button class="form-barber-card">
+          <button class="form-barber-card" (click)="getBarberName('Tiago Turola')">
             <div class="barber-card-title">
               <ion-title class="card-title">Tiago Turola</ion-title>
             </div>
@@ -53,7 +53,7 @@
             </div>
           </button>
 
-          <button class="form-barber-card">
+          <button class="form-barber-card" (click)="getBarberName('Felippe Vilas Boas')">
             <div class="barber-card-title">
               <ion-title class="card-title">Felippe Vilas Boas</ion-title>
             </div>
@@ -69,7 +69,7 @@
           type="submit"
           class="form-register-button"
           color="success"
-          (click)="save()"
+          (click)="create()"
         >
           Finalizar
         </ion-button>
