@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { v4 as uuid } from 'uuid';
-import { ISchedule, ScheduleService } from './../../services/schedule.service';
+import { IBarber, ISchedule, ScheduleService } from './../../services/schedule.service';
 
 @Component({
   selector: 'app-schedule',
@@ -8,6 +8,7 @@ import { ISchedule, ScheduleService } from './../../services/schedule.service';
   styleUrls: ['./schedule.page.scss'],
 })
 export class SchedulePage implements OnInit {
+  public barbers: IBarber[] = this.scheduleService.findAllBarbers();
   private schedule: ISchedule;
   constructor(private scheduleService: ScheduleService) { }
 
@@ -27,6 +28,7 @@ export class SchedulePage implements OnInit {
 
     this.schedule.id = uuid();
     this.scheduleService.store(this.schedule);
+    this.ngOnInit();
     this.goHome();
   }
 

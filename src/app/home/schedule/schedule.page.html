@@ -34,28 +34,10 @@
 
       <div class="content-form-barber">
         <ion-title class="barber-title">Selecione o Barbeiro:</ion-title>
-        <div class="form-barber-description">
-          <button class="form-barber-card" (click)="getBarberName('Joao Gabriel Caetano')">
+        <div class="form-barber-description" *ngFor="let barber of barbers">
+          <button class="form-barber-card" (click)="getBarberName(barber.name)">
             <div class="barber-card-title">
-              <ion-title class="card-title">João Gabriel Caetano</ion-title>
-            </div>
-            <div class="barber-card-description">
-              <img class="card-image" src="../../../assets/avatar.jpg" alt="Foto Funcionário" />
-            </div>
-          </button>
-
-          <button class="form-barber-card" (click)="getBarberName('Tiago Turola')">
-            <div class="barber-card-title">
-              <ion-title class="card-title">Tiago Turola</ion-title>
-            </div>
-            <div class="barber-card-description">
-              <img class="card-image" src="../../../assets/avatar.jpg" alt="Foto Funcionário" />
-            </div>
-          </button>
-
-          <button class="form-barber-card" (click)="getBarberName('Felippe Vilas Boas')">
-            <div class="barber-card-title">
-              <ion-title class="card-title">Felippe Vilas Boas</ion-title>
+              <ion-title class="card-title">{{barber.name}}</ion-title>
             </div>
             <div class="barber-card-description">
               <img class="card-image" src="../../../assets/avatar.jpg" alt="Foto Funcionário" />
