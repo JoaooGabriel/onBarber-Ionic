@@ -1,9 +1,4 @@
 ion-content {
-  ion-tab-button {
-    --background-focused: var(--main);
-    --color-selected: var(--main);
-  }
-
   .header {
     height: 100px;
 
@@ -62,10 +57,12 @@ ion-content {
   }
 
   .content {
-    height: 100%;
-    width: 80%;
+    height: 70%;
+    width: 90%;
 
     display: flex;
+    flex-wrap: wrap;
+
     align-items: center;
     justify-content: center;
 
@@ -80,9 +77,11 @@ ion-content {
     }
 
     .content-card {
-      width: 22%;
+      min-width: 300px;
 
       border-radius: 0.625rem;
+
+      margin: 1rem;
 
       .content-header-card {
         display: flex;
