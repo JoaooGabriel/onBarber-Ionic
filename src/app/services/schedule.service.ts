@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { format } from 'date-fns';
 
 export interface ISchedule{
   id: string;
@@ -64,7 +65,10 @@ export class ScheduleService {
   }
 
   public store(schedule: ISchedule) {
+    schedule.day = format(new Date(schedule.day), 'dd/MM/yyyy');
     this.schedules.push(schedule);
+
+    console.log(schedule);
 
     return this.schedules;
   }
