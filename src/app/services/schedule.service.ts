@@ -8,37 +8,29 @@ export interface ISchedule{
   barberName: string;
 }
 
+export interface IBarber {
+  name: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ScheduleService {
-  private schedules: ISchedule[] = [
+  private barbers: IBarber[] = [
     {
-      id: '3f4f8177-b9db-45ad-9bf8-16297ccc0e51',
-      day: '26/09/2021',
-      hour: '13:00',
-      barberName: 'João'
+      name: 'João Gabriel'
     },
     {
-      id: '124ff50c-3881-47fa-ae18-cb2fbf647e64',
-      day: '29/09/2021',
-      hour: '12:00',
-      barberName: 'Samuka'
+      name: 'Felippe dos Santos'
     },
     {
-      id: 'd5eb8ca8-4582-43e8-aa16-e30d3242c261',
-      day: '07/10/2021',
-      hour: '17:00',
-      barberName: 'Tiago'
+      name: 'Tiago Turola'
     },
     {
-      id: '6fc05cac-2993-43b2-a5a3-bfa94353abc7',
-      day: '20/10/2021',
-      hour: '09:00',
-      barberName: 'Bruno'
+      name: 'Bruno'
     }
   ];
-
+  private schedules: ISchedule[] = [];
   constructor(private router: Router) { }
 
   public init(){
@@ -49,6 +41,7 @@ export class ScheduleService {
       barberName: ''
     };
   }
+
   public delete(scheduleId: string) {
     if (this.schedules.length === 1) {
       this.schedules = [];
@@ -62,18 +55,22 @@ export class ScheduleService {
       return this.schedules;
     }
 
+    alert('Ocorreu um erro ao executar a operação!');
     throw Error('Ocorreu um erro ao executar a operação!');
   }
 
   public store(schedule: ISchedule){
     this.schedules.push(schedule);
 
-    alert('agendamento criado com sucesso!');
-    return schedule;
+    return this.schedules;
   }
 
   public findAll(){
     return this.schedules;
+  }
+
+  public findAllBarbers() {
+    return this.barbers;
   }
 
   public navigate(path: string) {

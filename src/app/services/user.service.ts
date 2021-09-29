@@ -63,8 +63,6 @@ export class UserService {
 
     this.loggedUser = user;
 
-    alert('Autenticado com sucesso!');
-
     return user;
   }
 
