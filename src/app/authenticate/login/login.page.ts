@@ -45,6 +45,7 @@ export class LoginPage implements OnInit {
 
     const user = this.userService.login(this.user.email, this.user.password);
 
+    this.ngOnInit();
     this.userService.navigate('/home');
 
     return user;

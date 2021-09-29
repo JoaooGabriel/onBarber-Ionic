@@ -49,6 +49,7 @@ export class RegisterPage implements OnInit {
 
     this.user.id = uuid();
     this.userService.store(this.user);
+    this.ngOnInit();
     this.userService.navigate('/authenticate/login');
   }
 }
