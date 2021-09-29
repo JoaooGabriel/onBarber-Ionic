@@ -66,19 +66,14 @@ export class ScheduleService {
 
   public store(schedule: ISchedule) {
     schedule.day = format(new Date(schedule.day), 'dd/MM/yyyy');
-    this.schedules.push(schedule);
 
-    console.log(schedule);
+    this.schedules.push(schedule);
 
     return this.schedules;
   }
 
   public findAll() {
     return this.schedules;
-  }
-
-  public async findAllScheduleByLoggedUser(userId: string) {
-    return this.schedules.filter((schedule) => schedule.userId === userId);
   }
 
   public findAllBarbers() {
