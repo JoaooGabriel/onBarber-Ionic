@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ISchedule, ScheduleService } from '../services/schedule.service';
-import { UserService } from '../services/user.service';
-import { IUser } from './../services/user.service';
+import { IUser, UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +14,7 @@ export class HomePage {
   constructor(private userService: UserService, private scheduleService: ScheduleService) {
     this.getLoggedUser();
   }
+
   public findAll(){
     return this.scheduleService.findAll();
   }
@@ -29,12 +29,13 @@ export class HomePage {
     return this.schedules;
   }
 
-  logout() {
+  public logout() {
     this.userService.logout();
   }
 
-  public delete(scheduleId:string){
+  public delete(scheduleId: string) {
     const schedules = this.scheduleService.delete(scheduleId);
+
     this.schedules = schedules;
   }
 }

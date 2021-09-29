@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser, UserService } from './../../services/user.service';
 import { v4 as uuid } from 'uuid';
+import { IUser, UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-register',

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {v4 as uuid} from 'uuid';
-import { ISchedule, ScheduleService } from 'src/app/services/schedule.service';
-
-
+import { v4 as uuid } from 'uuid';
+import { ISchedule, ScheduleService } from './../../services/schedule.service';
 
 @Component({
   selector: 'app-schedule',
@@ -10,10 +8,8 @@ import { ISchedule, ScheduleService } from 'src/app/services/schedule.service';
   styleUrls: ['./schedule.page.scss'],
 })
 export class SchedulePage implements OnInit {
-
-  private schedule:ISchedule;
-
-  constructor(private scheduleService:ScheduleService) { }
+  private schedule: ISchedule;
+  constructor(private scheduleService: ScheduleService) { }
 
   ngOnInit() {
     this.schedule = this.scheduleService.init();
@@ -23,9 +19,9 @@ export class SchedulePage implements OnInit {
     this.schedule.barberName = barberName;
   }
 
-  public create(){
-    if(!this.schedule.day || !this.schedule.hour || !this.schedule.barberName ){
-      alert('Por favor, preencha todos os campos ou selecione um barbeiro!');       
+  public create() {
+    if (!this.schedule.day || !this.schedule.hour || !this.schedule.barberName) {
+      alert('Por favor, preencha todos os campos ou selecione um barbeiro!');
       throw Error('Por favor, preencha todos os campos ou selecione um barbeiro!');
     }
 
@@ -33,8 +29,8 @@ export class SchedulePage implements OnInit {
     this.scheduleService.store(this.schedule);
     this.goHome();
   }
-  
-  public goHome(){
+
+  public goHome() {
     this.scheduleService.navigate('/home');
   }
 }
