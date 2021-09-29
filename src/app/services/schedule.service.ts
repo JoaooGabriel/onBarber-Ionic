@@ -2,19 +2,17 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 export interface ISchedule{
-  
-  id:string;
-  day:string;
-  hour:string;
-  barberName:string;
-
+  id: string;
+  day: string;
+  hour: string;
+  barberName: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScheduleService {
-  private schedules:ISchedule[]= [
+  private schedules: ISchedule[] = [
     {
       id: '3f4f8177-b9db-45ad-9bf8-16297ccc0e51',
       day: '26/09/2021',
@@ -48,8 +46,8 @@ export class ScheduleService {
       id: '',
       day: '',
       hour: '',
-      barberName: '',
-    }
+      barberName: ''
+    };
   }
   public delete(scheduleId: string) {
     if (this.schedules.length === 1) {
@@ -60,23 +58,25 @@ export class ScheduleService {
 
     if (indexSchedules > -1) {
       this.schedules.splice(indexSchedules, 1);
+
       return this.schedules;
     }
 
     throw Error('Ocorreu um erro ao executar a operação!');
   }
-  
-  public navigate(path: string) {
-    this.router.navigate([path]);
-  }
+
   public store(schedule: ISchedule){
     this.schedules.push(schedule);
 
-    alert('agendamento criado com sucesso!')
+    alert('agendamento criado com sucesso!');
     return schedule;
-
   }
+
   public findAll(){
     return this.schedules;
+  }
+
+  public navigate(path: string) {
+    this.router.navigate([path]);
   }
 }
