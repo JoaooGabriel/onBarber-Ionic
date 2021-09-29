@@ -45,6 +45,8 @@ export class ScheduleService {
   public delete(scheduleId: string) {
     if (this.schedules.length === 1) {
       this.schedules = [];
+
+      return this.schedules;
     }
 
     const indexSchedules = this.schedules.findIndex((schedule) => schedule.id === scheduleId );
