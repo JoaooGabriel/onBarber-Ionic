@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser, UserService } from 'src/app/services/user.service';
 import { v4 as uuid } from 'uuid';
 import { IBarber, ISchedule, ScheduleService } from './../../services/schedule.service';
 
@@ -10,10 +11,19 @@ import { IBarber, ISchedule, ScheduleService } from './../../services/schedule.s
 export class SchedulePage implements OnInit {
   public barbers: IBarber[] = this.scheduleService.findAllBarbers();
   private schedule: ISchedule;
-  constructor(private scheduleService: ScheduleService) { }
+  private loggedUser: IUser;
+  constructor(private scheduleService: ScheduleService, private userService: UserService) {
+    this.getLoggedUser();
+   }
 
   ngOnInit() {
     this.schedule = this.scheduleService.init();
+  }
+
+  public getLoggedUser() {
+    const user = this.userService.findLoggedUser();
+
+    this.loggedUser = user;
   }
 
   public getBarberName(barberName: string){
@@ -27,12 +37,13 @@ export class SchedulePage implements OnInit {
     }
 
     this.schedule.id = uuid();
+    this.schedule.userId = this.loggedUser.id;
     this.scheduleService.store(this.schedule);
     this.ngOnInit();
     this.goHome();
   }
 
   public goHome() {
-    this.scheduleService.navigate('/home');
+    this.scheduleService.navigate('/home/main');
   }
 }
