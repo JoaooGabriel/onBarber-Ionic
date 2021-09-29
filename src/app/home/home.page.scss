@@ -62,12 +62,14 @@ ion-content {
   }
 
   .content {
-    height: 100%;
-    width: 80%;
+    height: 67%;
+    width: 90%;
 
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+
     justify-content: center;
+    align-items: center;
 
     background: #252525;
 
@@ -75,14 +77,12 @@ ion-content {
 
     margin: 5rem auto;
 
-    .content-card + .content-card {
-      margin-left: 2rem;
-    }
-
     .content-card {
-      width: 22%;
+      min-width: 300px;
 
       border-radius: 0.625rem;
+
+      margin: 1rem;
 
       .content-header-card {
         display: flex;
