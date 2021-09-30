@@ -8,16 +8,11 @@ import { RegisterPageRoutingModule } from './register-routing.module';
 
 import { RegisterPage } from './register.page';
 
-// import { BrMaskerModule } from 'brmasker-ionic-3';
-
-// @NgModule({
-//   imports: [
-//     BrMaskerModule
-//   ],
-// })
+import { BrMaskerModule } from 'br-mask';
 
 @NgModule({
   imports: [
+    BrMaskerModule,
     CommonModule,
     FormsModule,
     IonicModule,
