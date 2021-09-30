@@ -6,11 +6,11 @@
 
     <div class="login-form-content">
       <div class="login-input-form">
-        <ion-input class="input-email" type="text" placeholder="E-mail" name="email" [(ngModel)]="user.email">
+        <ion-input class="input-email" type="email" placeholder="E-mail" name="email" [(ngModel)]="user.email">
         </ion-input>
 
-        <ion-input class="input-password" type="{{inputPassword.inputType}}" placeholder="Senha"
-          name="password" [(ngModel)]="user.password">
+        <ion-input class="input-password" type="{{inputPassword.inputType}}" placeholder="Senha" name="password"
+          [(ngModel)]="user.password">
         </ion-input>
 
         <span (click)="isPasswordVisible(inputPassword.visible)">
@@ -19,7 +19,7 @@
       </div>
 
       <div class="login-button-form">
-        <ion-button class="button" color="success" (click)="login()">
+        <ion-button type="submit" class="button" color="main" (click)="login()" strong="true">
           ENTRAR
         </ion-button>
       </div>

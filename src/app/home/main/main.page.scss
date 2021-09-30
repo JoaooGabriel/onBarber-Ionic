@@ -1,0 +1,172 @@
+ion-content {
+  ion-tab-button {
+    --background-focused: var(--main);
+    --color-selected: var(--main);
+  }
+
+  .header {
+    height: 100px;
+
+    background-color: var(--dark-gray);
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    .header-profile {
+      display: flex;
+
+      align-items: center;
+
+      margin: 0 2rem;
+
+      .header-profile-image {
+        width: 80px;
+
+        border: 2px solid var(--white);
+        border-radius: 50%;
+      }
+
+      .header-profile-title {
+        font-size: 1.2rem;
+
+        color: var(--white);
+
+        margin-top: 1.5rem;
+
+        margin-left: 1.2rem;
+      }
+    }
+
+    .header-logout {
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      margin: 0 2rem;
+
+      .header-logout-button {
+        margin: 0 1rem;
+
+        padding: 0px 40px 0px 10px;
+
+        position: relative;
+
+        color: var(--white);
+
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .content {
+    height: 100%;
+    width: 80%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #252525;
+
+    border-radius: 0.625rem;
+
+    margin: 5rem auto;
+
+    .content-card + .content-card {
+      margin-left: 2rem;
+    }
+
+    .content-card {
+      width: 22%;
+
+      border-radius: 0.625rem;
+
+      .content-header-card {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        background: var(--dark-gray);
+
+        border-radius: 0.625rem 0.625rem 0 0;
+
+        padding: 0.8rem;
+
+        button {
+          background: var(--dark-gray);
+
+          cursor: pointer;
+
+          .content-header-card-icon {
+            height: 22px;
+            width: 22px;
+
+            color: var(--white);
+          }
+        }
+      }
+
+      .description-card {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        justify-content: space-between;
+
+        background: #404040;
+        color: var(--white);
+
+        border-radius: 0 0 0.625rem 0.625rem;
+
+        padding: 1rem;
+
+        .description-card-day::after {
+          content: "";
+
+          height: 2px;
+          width: 100%;
+
+          background-color: var(--dark-gray);
+
+          margin: 5px 0;
+
+          display: block;
+        }
+
+        .description-card-hour::after {
+          content: "";
+
+          height: 2px;
+          width: 100%;
+
+          background-color: var(--dark-gray);
+
+          margin: 5px 0;
+
+          display: block;
+        }
+
+        p {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          font-weight: bold;
+
+          padding: 0.3rem;
+        }
+
+        span {
+          margin-left: 5px;
+
+          color: var(--white);
+
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}

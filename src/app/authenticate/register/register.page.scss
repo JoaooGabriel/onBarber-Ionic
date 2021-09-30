@@ -1,6 +1,6 @@
 ion-content {
   .register-page {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
 
     margin: 0 auto;
@@ -34,7 +34,7 @@ ion-content {
     height: 46px;
     width: 20rem;
 
-    margin: 2px 0;
+    margin: 0.5rem 0;
 
     font-size: 16px;
 
@@ -65,7 +65,7 @@ ion-content {
 
     position: absolute;
 
-    margin-top: -35px;
+    margin-top: -41px;
     margin-left: 290px;
     z-index: 2;
   }
@@ -80,6 +80,18 @@ ion-content {
 
   .buttons .register-button {
     height: 40px;
-    width: 130px;
+    width: 10rem;
+  }
+
+  // RESPONSIVIDADE
+  @media screen and (max-width: 850px) {
+    .register-page {
+      flex-direction: column;
+    }
+
+    .logo-container .logo {
+      margin-right: 0px;
+      margin-bottom: 50px;
+    }
   }
 }

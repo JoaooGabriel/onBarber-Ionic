@@ -6,6 +6,21 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+    children: [
+      {
+        path: '',
+        redirectTo: 'main',
+        pathMatch: 'full',
+      },
+      {
+        path: 'schedule',
+        loadChildren: () => import('./schedule/schedule.module').then( m => m.SchedulePageModule)
+      },
+      {
+        path: 'main',
+        loadChildren: () => import('./main/main.module').then( m => m.MainPageModule)
+      },
+    ]
   }
 ];
 

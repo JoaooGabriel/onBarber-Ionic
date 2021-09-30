@@ -1,0 +1,193 @@
+ion-content {
+  .header {
+    height: 100px;
+
+    background-color: var(--dark-gray);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    .header-profile {
+      display: flex;
+
+      align-items: center;
+
+      margin: 0 2rem;
+
+      .header-profile-image {
+        width: 80px;
+
+        border: 2px solid var(--white);
+        border-radius: 50%;
+      }
+
+      .header-profile-title {
+        font-size: 1.2rem;
+
+        color: var(--white);
+
+        margin-top: 1.5rem;
+
+        margin-left: 1.2rem;
+      }
+    }
+
+    .header-logout {
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      margin: 0 2rem;
+
+      .header-logout-button {
+        margin: 0 1rem;
+
+        padding: 0px 40px 0px 10px;
+
+        position: relative;
+
+        color: var(--white);
+
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .content {
+    height: 70%;
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #252525;
+
+    border-radius: 0.625rem;
+
+    margin: 5rem auto;
+
+    .schedule-title {
+      margin: 2rem 0;
+
+      .title {
+        padding: 0;
+        margin: 0;
+
+        text-align: center;
+
+        color: var(--white);
+      }
+    }
+
+    .dayTime-container {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+      align-items: center;
+
+      .schedule-input {
+        width: 13rem;
+
+        background-color: var(--light-black);
+
+        border: 1px solid var(--dark-gray);
+
+        border-radius: 0.625rem;
+
+        color: var(--white);
+
+        ::-webkit-calendar-picker-indicator {
+          filter: invert(1);
+
+          cursor: pointer;
+        }
+      }
+    }
+
+    .barber-container {
+      width: 80%;
+
+      margin: 0 auto 0 auto;
+
+      display: flex;
+      flex-direction: row;
+
+      flex-wrap: wrap;
+
+      :focus {
+        background-color: var(--dark-gray);
+        border: 2px solid white;
+      }
+
+      .barber-card-container {
+        display: flex;
+        flex-direction: row;
+
+        margin: 0 auto;
+
+        .barber-card {
+          height: 200px;
+          width: 250px;
+
+          padding: 0;
+
+          margin: 1rem;
+
+          border-radius: 0.5rem 0.5rem 0 0;
+        }
+
+        .barber-name {
+          height: 40px;
+          width: 100%;
+
+          margin-bottom: 100%;
+
+          overflow: hidden;
+
+          background-color: var(--light-black);
+
+          border-radius: 0.5rem 0.5rem 0 0;
+
+          display: flex;
+
+          align-items: center;
+          justify-content: center;
+
+          .card-title {
+            font-size: 16px;
+          }
+        }
+
+        .card-image {
+          position: absolute;
+
+          margin-top: -213px;
+          margin-left: -40px;
+
+          width: 80px;
+
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+  .content-button {
+    margin: 1rem auto;
+
+    .finish-button {
+      height: 40px;
+      width: 10rem;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .content {
+      height: 145%;
+    }
+  }
+}
