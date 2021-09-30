@@ -11,14 +11,13 @@
           [(ngModel)]="user.name">
         </ion-input>
 
-        <ion-input class="default-input" type="text" placeholder="Telefone" name="phone" [(ngModel)]="user.phone">
+        <ion-input class="default-input" type="text" placeholder="Telefone" name="phone" [(ngModel)]="user.phone" [brmasker]="{phone: true}">
         </ion-input>
 
         <ion-input class="input-city" type="text" placeholder="Cidade" name="city" [(ngModel)]="user.city">
         </ion-input>
 
-        <ion-input class="default-input" type="email" placeholder="E-mail" name="email" [(ngModel)]="user.email">
-        </ion-input>
+        <ion-input class="default-input" type="email" placeholder="E-mail" name="email" [(ngModel)]="user.email"></ion-input>
 
         <ion-input class="default-input" type="{{inputPassword.inputType}}" placeholder="Senha" name="password"
           [(ngModel)]="user.password">
