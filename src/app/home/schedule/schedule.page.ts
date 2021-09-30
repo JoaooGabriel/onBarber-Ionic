@@ -32,8 +32,8 @@ export class SchedulePage implements OnInit {
 
   public create() {
     if (!this.schedule.day || !this.schedule.hour || !this.schedule.barberName) {
-      alert('Por favor, preencha todos os campos ou selecione um barbeiro!');
-      throw Error('Por favor, preencha todos os campos ou selecione um barbeiro!');
+      alert('Por favor, preencha todos os campos e selecione um barbeiro!');
+      throw Error('Por favor, preencha todos os campos e selecione um barbeiro!');
     }
 
     this.schedule.id = uuid();

@@ -38,7 +38,8 @@ export class ScheduleService {
     },
     {
       name: 'Bruno',
-      image: '',
+      // eslint-disable-next-line max-len
+      image: 'https://pps.whatsapp.net/v/t61.24694-24/116347142_774635739944801_2645334856715129436_n.jpg?ccb=11-4&oh=a22c05f8fb8eb4f5cea711020cca52d8&oe=615A7A5B',
     },
   ];
   private schedules: ISchedule[] = [];
@@ -78,8 +79,6 @@ export class ScheduleService {
   public store(schedule: ISchedule) {
     schedule.day = format(new Date(schedule.day), 'dd/MM/yyyy');
     this.schedules.push(schedule);
-
-    console.log(schedule);
 
     return this.schedules;
   }
