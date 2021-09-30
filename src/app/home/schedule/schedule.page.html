@@ -1,61 +1,52 @@
 <ion-content>
   <div class="header">
     <div class="header-profile">
-      <img
-        class="header-profile-image"
-        src="../../assets/avatar.jpg"
-        alt="Foto de perfil"
-      />
+      <img class="header-profile-image" src="../../assets/avatar.jpg" alt="Foto de perfil" />
     </div>
 
     <div class="header-logout">
-      <ion-button
-        type="submit"
-        class="header-logout-button"
-        color="warning"
-        (click)="goHome()"
-      >
+      <ion-button type="submit" class="header-logout-button" color="dark" (click)="goHome()">
         <ion-icon name="chevron-back-outline"></ion-icon>
       </ion-button>
     </div>
   </div>
 
   <div class="content">
-    <div class="content-title">
+    <div class="schedule-title">
       <ion-title class="title">Selecione o dia e o horário:</ion-title>
     </div>
 
-    <div class="content-form">
-      <div class="content-form-input">
-        <ion-input class="form-schedule-input" type="date" [(ngModel)]="schedule.day" > </ion-input>
-
-        <ion-input class="form-schedule-input" type="time" [(ngModel)]="schedule.hour"> </ion-input>
+    <div class="schedule-container">
+      <div class="dayTime-container">
+        <div class="schedule-input-container">
+          <ion-input class="schedule-input" type="date" [(ngModel)]="schedule.day"></ion-input>
+        </div>
+        <div class="schedule-input-container">
+          <ion-input class="schedule-input" type="time" [(ngModel)]="schedule.hour"></ion-input>
+        </div>
       </div>
 
-      <div class="content-form-barber">
-        <ion-title class="barber-title">Selecione o Barbeiro:</ion-title>
-        <div class="form-barber-description" *ngFor="let barber of barbers">
-          <button class="form-barber-card" (click)="getBarberName(barber.name)">
-            <div class="barber-card-title">
+      <div class="schedule-title">
+        <ion-title class="title">Selecione o barbeiro:</ion-title>
+      </div>
+      <div class="barber-container">
+        <div class="barber-card-container" *ngFor="let barber of barbers">
+          <button class="barber-card" (click)="getBarberName(barber.name)">
+            <div class="barber-name">
               <ion-title class="card-title">{{barber.name}}</ion-title>
             </div>
-            <div class="barber-card-description">
-              <img class="card-image" src="../../../assets/avatar.jpg" alt="Foto Funcionário" />
+            <div class="barber-photo">
+              <img class="card-image" src={{barber.image}} alt="Foto Funcionário" />
             </div>
           </button>
         </div>
       </div>
+    </div>
 
-      <div class="content-form-button">
-        <ion-button
-          type="submit"
-          class="form-register-button"
-          color="success"
-          (click)="create()"
-        >
-          Finalizar
-        </ion-button>
-      </div>
+    <div class="content-button">
+      <ion-button type="submit" class="finish-button" color="main" (click)="create()" strong="true">
+        Finalizar
+      </ion-button>
     </div>
   </div>
 </ion-content>
