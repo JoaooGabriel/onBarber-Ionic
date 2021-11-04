@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { format } from 'date-fns';
+import { Storage } from '@ionic/storage-angular';
 
 export interface ISchedule {
   id: string;
@@ -39,11 +40,26 @@ export class ScheduleService {
     {
       name: 'Bruno',
       // eslint-disable-next-line max-len
-      image: 'https://pps.whatsapp.net/v/t61.24694-24/116347142_774635739944801_2645334856715129436_n.jpg?ccb=11-4&oh=a22c05f8fb8eb4f5cea711020cca52d8&oe=615A7A5B',
+      image: 'https://pps.whatsapp.net/v/t61.24694-24/158394251_304919947728221_6673908805942503455_n.jpg?ccb=11-4&oh=f2b2533cd6b5ef2c68c4fe1495b46374&oe=6188579C',
     },
   ];
+
   private schedules: ISchedule[] = [];
-  constructor(private router: Router) {}
+
+  constructor(private router: Router, private storage: Storage) {
+    this.getSchedules();
+  }
+
+  public async getSchedules() {
+    const keys = await this.storage.keys();
+
+    keys.forEach(async (key: string) => {
+      if (key.split(':')[0] === 'schedule') {
+        const getSchedule = await this.storage.get(key);
+        this.schedules.push(getSchedule);
+      }
+    });
+  }
 
   public init() {
     return {
@@ -55,8 +71,9 @@ export class ScheduleService {
     };
   }
 
-  public delete(scheduleId: string) {
+  public async delete(scheduleId: string) {
     if (this.schedules.length === 1) {
+      await this.storage.remove(`schedule:${scheduleId}`);
       this.schedules = [];
 
       return this.schedules;
@@ -67,6 +84,8 @@ export class ScheduleService {
     );
 
     if (indexSchedules > -1) {
+      await this.storage.remove(`schedule:${scheduleId}`);
+
       this.schedules.splice(indexSchedules, 1);
 
       return this.schedules;
@@ -78,6 +97,9 @@ export class ScheduleService {
 
   public store(schedule: ISchedule) {
     schedule.day = format(new Date(schedule.day), 'dd/MM/yyyy');
+
+    this.storage.set(`schedule:${schedule.id}`, schedule);
+
     this.schedules.push(schedule);
 
     return this.schedules;

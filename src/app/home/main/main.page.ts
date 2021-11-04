@@ -10,15 +10,17 @@ import { IUser, UserService } from 'src/app/services/user.service';
 export class MainPage implements OnInit {
   public user: IUser;
   public schedules: ISchedule[];
-  constructor(private userService: UserService, private scheduleService: ScheduleService) {
+  constructor(
+    private userService: UserService,
+    private scheduleService: ScheduleService
+  ) {
     this.getLoggedUser();
     this.schedules = this.findAll();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  public findAll(){
+  public findAll() {
     return this.scheduleService.findAll();
   }
 
@@ -36,8 +38,8 @@ export class MainPage implements OnInit {
     this.userService.logout();
   }
 
-  public delete(scheduleId: string) {
-    const schedules = this.scheduleService.delete(scheduleId);
+  public async delete(scheduleId: string) {
+    const schedules = await this.scheduleService.delete(scheduleId);
 
     this.schedules = schedules;
   }

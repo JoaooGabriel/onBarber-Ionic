@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 
 export interface IUser {
   id: string;
@@ -26,7 +27,9 @@ export class UserService {
   ];
 
   private loggedUser: IUser;
-  constructor(private router: Router) {}
+  constructor(private router: Router, private storage: Storage) {
+    this.getUsers();
+  }
 
   public init(): IUser {
     return {
@@ -39,8 +42,22 @@ export class UserService {
     };
   }
 
-  public findAll(): Readonly<Array<Readonly<IUser>>> {
+  public findAll() {
     return this.users;
+  }
+
+  public async getUsers() {
+    const getUsers = await this.storage.get('users');
+
+    if (!getUsers) {
+      return;
+    }
+
+    if (Array.isArray(getUsers)) {
+      this.users.push(...getUsers);
+    }
+
+    this.users.push(getUsers);
   }
 
   public find(userId: string): IUser {
@@ -74,7 +91,7 @@ export class UserService {
 
   public store(user: IUser) {
     const userExists = this.users.find(
-      (u) => u.email === user.email && u.phone === user.phone
+      (u) => u.email === user.email || u.phone === user.phone
     );
 
     if (userExists) {
@@ -82,6 +99,7 @@ export class UserService {
       throw Error('Este usuário já existe!');
     }
 
+    this.storage.set('users', user);
     this.users.push(user);
 
     alert('Usuário criado com sucesso!');
