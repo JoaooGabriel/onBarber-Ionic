@@ -21,16 +21,6 @@ ion-content {
 
         margin: 0 0 0 2rem;
       }
-
-      .header-profile-title {
-        font-size: 1.2rem;
-
-        width: 500px;
-
-        color: var(--white);
-
-        margin-top: 40px;
-      }
     }
 
     .header-logout {
@@ -183,6 +173,7 @@ ion-content {
     }
   }
 
+  // RESPONSIVIDADE 
   @media screen and (max-width: 800px) {
     .content {
       height: 145%;
