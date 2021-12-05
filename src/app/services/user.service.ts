@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import { api } from 'src/config/api';
 
 export interface IUser {
   id: string;
+  name: string;
+  email: string;
+  phone: string;
+  city: string;
+  password: string;
+}
+
+export interface IRegisterUser {
   name: string;
   email: string;
   phone: string;
@@ -42,22 +51,30 @@ export class UserService {
     };
   }
 
-  public findAll() {
-    return this.users;
+  public async findAll() {
+    const users = await api.get('users/list')
+      .then(async (response) => {
+        return response.data;
+      })
+      .catch((err) => {
+        alert(err);
+
+        throw new Error(err);
+      });
+
+    return users;
   }
 
   public async getUsers() {
-    const getUsers = await this.storage.get('users');
+    const getUsers = await this.findAll();
 
-    if (!getUsers) {
+    if (getUsers.length === 0) {
       return;
     }
 
-    if (Array.isArray(getUsers)) {
-      this.users.push(...getUsers);
-    }
-
-    this.users.push(getUsers);
+    getUsers.forEach((user) => {
+      this.users.push(user);
+    })
   }
 
   public find(userId: string): IUser {
@@ -89,20 +106,30 @@ export class UserService {
     this.navigate('/authenticate/login');
   }
 
-  public store(user: IUser) {
-    const userExists = this.users.find(
-      (u) => u.email === user.email || u.phone === user.phone
-    );
+  public async store(data: IRegisterUser) {
+    // const userExists = this.users.find(
+    //   (u) => u.email === user.email || u.phone === user.phone
+    // );
 
-    if (userExists) {
-      alert('Este usuário já existe!');
-      throw Error('Este usuário já existe!');
-    }
+    // if (userExists) {
+    //   alert('Este usuário já existe!');
+    //   throw Error('Este usuário já existe!');
+    // }
 
-    this.storage.set('users', user);
-    this.users.push(user);
+    // this.storage.set('users', user);
+    // this.users.push(user);
 
-    alert('Usuário criado com sucesso!');
+    const user = await api.post('users/', data)
+      .then(async (response) => {
+        alert('Usuário criado com sucesso!');
+        await this.findAll();
+        return response.data;
+      })
+      .catch((err) => {
+        alert(err);
+
+        throw new Error(err);
+      });
 
     return user;
   }

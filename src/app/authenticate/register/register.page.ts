@@ -47,7 +47,7 @@ export class RegisterPage implements OnInit {
       throw Error('Por favor, preencha todos os campos!');
     }
 
-    this.user.id = uuid();
+    this.user.id = undefined;
     this.userService.store(this.user);
     this.ngOnInit();
     this.userService.navigate('/authenticate/login');
