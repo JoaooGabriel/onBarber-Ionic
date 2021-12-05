@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { v4 as uuid } from 'uuid';
-import { IUser, UserService } from './../../services/user.service';
+import { IRegisterUser, IUser, UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -47,8 +47,8 @@ export class RegisterPage implements OnInit {
       throw Error('Por favor, preencha todos os campos!');
     }
 
-    this.user.id = undefined;
-    this.userService.store(this.user);
+    // this.user.id = undefined;
+    this.userService.store(this.user as IRegisterUser);
     this.ngOnInit();
     this.userService.navigate('/authenticate/login');
   }

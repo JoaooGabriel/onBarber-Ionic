@@ -9,7 +9,7 @@ export interface IUser {
   email: string;
   phone: string;
   city: string;
-  password: string;
+  password?: string;
 }
 
 export interface IRegisterUser {
@@ -53,9 +53,7 @@ export class UserService {
 
   public async findAll() {
     const users = await api.get('users/list')
-      .then(async (response) => {
-        return response.data;
-      })
+      .then(async (response) => response.data)
       .catch((err) => {
         alert(err);
 
@@ -72,9 +70,9 @@ export class UserService {
       return;
     }
 
-    getUsers.forEach((user) => {
+    getUsers.forEach((user: IUser) => {
       this.users.push(user);
-    })
+    });
   }
 
   public find(userId: string): IUser {
