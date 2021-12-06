@@ -10,7 +10,7 @@ import { IBarber, ISchedule, ScheduleService } from './../../services/schedule.s
 })
 export class SchedulePage implements OnInit {
   public barbers: IBarber[] = this.scheduleService.findAllBarbers();
-  private schedule: ISchedule;
+  public schedule: ISchedule;
   private loggedUser: IUser;
   constructor(private scheduleService: ScheduleService, private userService: UserService) {
     this.getLoggedUser();
