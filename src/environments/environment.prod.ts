@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendApiBaseURL: 'http://localhost:3333/v1/'
+  backendApiBaseURL: 'https://onbarber-ionic-api.herokuapp.com/v1/'
 };

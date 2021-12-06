@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 export const api = axios.create({
-    baseURL: environment.production ? environment.backendApiBaseURL : '',
+    baseURL: environment.backendApiBaseURL,
     headers: {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         'Content-Type': 'application/json',
         accept: 'application/json, text/plain'
     }
