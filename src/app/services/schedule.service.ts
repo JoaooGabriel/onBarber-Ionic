@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { format } from 'date-fns';
 import { Storage } from '@ionic/storage-angular';
+import { api } from 'src/config/api';
+import { UserService, IUser } from 'src/app/services/user.service';
 
 export interface ISchedule {
   id: string;
+  day: string;
+  hour: string;
+  barberName: string;
+  userId: string;
+}
+
+export interface IRegisterSchedule {
   day: string;
   hour: string;
   barberName: string;
@@ -39,26 +47,17 @@ export class ScheduleService {
     },
     {
       name: 'Bruno',
-      // eslint-disable-next-line max-len
-      image: 'https://pps.whatsapp.net/v/t61.24694-24/158394251_304919947728221_6673908805942503455_n.jpg?ccb=11-4&oh=f2b2533cd6b5ef2c68c4fe1495b46374&oe=6188579C',
+      image:
+        // eslint-disable-next-line max-len
+        'https://pps.whatsapp.net/v/t61.24694-24/158394251_304919947728221_6673908805942503455_n.jpg?ccb=11-4&oh=f2b2533cd6b5ef2c68c4fe1495b46374&oe=6188579C',
     },
   ];
-
   private schedules: ISchedule[] = [];
+  private user: IUser;
 
-  constructor(private router: Router, private storage: Storage) {
-    this.getSchedules();
-  }
-
-  public async getSchedules() {
-    const keys = await this.storage.keys();
-
-    keys.forEach(async (key: string) => {
-      if (key.split(':')[0] === 'schedule') {
-        const getSchedule = await this.storage.get(key);
-        this.schedules.push(getSchedule);
-      }
-    });
+  constructor(private router: Router, private userService: UserService) {
+    // this.user = this.userService.findLoggedUser();
+    // this.findAllScheduleByLoggedUser(this.user.id);
   }
 
   public init() {
@@ -72,45 +71,70 @@ export class ScheduleService {
   }
 
   public async delete(scheduleId: string) {
-    if (this.schedules.length === 1) {
-      await this.storage.remove(`schedule:${scheduleId}`);
-      this.schedules = [];
-
-      return this.schedules;
-    }
-
-    const indexSchedules = this.schedules.findIndex(
-      (schedule) => schedule.id === scheduleId
-    );
-
-    if (indexSchedules > -1) {
-      await this.storage.remove(`schedule:${scheduleId}`);
-
-      this.schedules.splice(indexSchedules, 1);
-
-      return this.schedules;
-    }
-
-    alert('Ocorreu um erro ao executar a operação!');
-    throw Error('Ocorreu um erro ao executar a operação!');
+    await api.delete(`schedules/${scheduleId}`)
+    .catch((err) => {
+      alert(err);
+      throw new Error(err);
+    });
   }
 
-  public store(schedule: ISchedule) {
-    schedule.day = format(new Date(schedule.day), 'dd/MM/yyyy');
+  public async store(data: IRegisterSchedule) {
+    const schedule = await api
+      .post('schedules/', data)
+      .then((response) => {
+        alert('Agendamento criado com sucesso!');
 
-    this.storage.set(`schedule:${schedule.id}`, schedule);
+        return response.data;
+      })
+      .catch((err) => {
+        alert(err);
+
+        throw new Error(err);
+      });
 
     this.schedules.push(schedule);
-
-    return this.schedules;
-  }
-
-  public findAll() {
-    return this.schedules;
+    return schedule;
   }
 
   public async findAllScheduleByLoggedUser(userId: string) {
-    return this.schedules.filter((schedule) => schedule.userId === userId);
+    const schedules = await api
+      .get(`schedules/user/${userId}`)
+      .then((response) => response.data)
+      .catch((err) => {
+        alert(err);
+
+        throw new Error(err);
+      });
+
+    this.schedules.push(schedules);
+
+    return schedules;
+  }
+
+  public async findById(scheduleId: string) {
+    const schedule = await api
+      .get(`schedules/${scheduleId}`)
+      .then((response) => response.data)
+      .catch((err) => {
+        alert(err);
+
+        throw new Error(err);
+      });
+
+    return schedule;
+  }
+
+  public async findAll() {
+    const schedules = await api
+      .get(`schedules/list`)
+      .then((response) => response.data)
+      .catch((err) => {
+        alert(err);
+
+        throw new Error(err);
+      });
+
+    return schedules;
   }
 
   public findAllBarbers() {

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser, UserService } from 'src/app/services/user.service';
-import { v4 as uuid } from 'uuid';
 import { IBarber, ISchedule, ScheduleService } from './../../services/schedule.service';
 
 @Component({
@@ -30,15 +29,14 @@ export class SchedulePage implements OnInit {
     this.schedule.barberName = barberName;
   }
 
-  public create() {
+  public async create() {
     if (!this.schedule.day || !this.schedule.hour || !this.schedule.barberName) {
       alert('Por favor, preencha todos os campos e selecione um barbeiro!');
       throw Error('Por favor, preencha todos os campos e selecione um barbeiro!');
     }
 
-    this.schedule.id = uuid();
     this.schedule.userId = this.loggedUser.id;
-    this.scheduleService.store(this.schedule);
+    await this.scheduleService.store(this.schedule);
     this.ngOnInit();
     this.goHome();
   }

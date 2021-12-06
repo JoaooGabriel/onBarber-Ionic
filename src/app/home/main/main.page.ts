@@ -15,13 +15,24 @@ export class MainPage implements OnInit {
     private scheduleService: ScheduleService
   ) {
     this.getLoggedUser();
-    this.schedules = this.findAll();
+    this.findAllScheduleByLoggedUser(this.user.id);
   }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    await this.findAllScheduleByLoggedUser(this.user.id);
+  }
 
-  public findAll() {
-    return this.scheduleService.findAll();
+  public async findAll() {
+    const schedules = await this.scheduleService.findAll();
+
+    return schedules;
+  }
+
+  public async findAllScheduleByLoggedUser(userId: string) {
+    const schedules = await this.scheduleService.findAllScheduleByLoggedUser(userId);
+
+    this.schedules = schedules;
+    return schedules;
   }
 
   public getLoggedUser() {
@@ -39,7 +50,8 @@ export class MainPage implements OnInit {
   }
 
   public async delete(scheduleId: string) {
-    const schedules = await this.scheduleService.delete(scheduleId);
+    await this.scheduleService.delete(scheduleId);
+    const schedules = await this.findAllScheduleByLoggedUser(this.user.id);
 
     this.schedules = schedules;
   }

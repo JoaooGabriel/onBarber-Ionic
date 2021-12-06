@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { v4 as uuid } from 'uuid';
 import { IRegisterUser, IUser, UserService } from './../../services/user.service';
 
 @Component({
