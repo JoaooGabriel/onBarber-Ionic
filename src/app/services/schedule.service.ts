@@ -53,11 +53,8 @@ export class ScheduleService {
     },
   ];
   private schedules: ISchedule[] = [];
-  private user: IUser;
 
   constructor(private router: Router, private userService: UserService) {
-    // this.user = this.userService.findLoggedUser();
-    // this.findAllScheduleByLoggedUser(this.user.id);
   }
 
   public init() {
@@ -96,7 +93,7 @@ export class ScheduleService {
     return schedule;
   }
 
-  public async findAllScheduleByLoggedUser(userId: string) {
+  public async findAllSchedulesByLoggedUser(userId: string) {
     const schedules = await api
       .get(`schedules/user/${userId}`)
       .then((response) => response.data)
@@ -106,7 +103,7 @@ export class ScheduleService {
         throw new Error(err);
       });
 
-    this.schedules.push(schedules);
+    this.schedules.push(...schedules);
 
     return schedules;
   }
