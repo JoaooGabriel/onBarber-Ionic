@@ -24,16 +24,7 @@ export interface IRegisterUser {
   providedIn: 'root',
 })
 export class UserService {
-  private users: IUser[] = [
-    {
-      id: 'ff8feb01-76c3-41dd-a1ae-9933974ed7b4',
-      name: 'Test',
-      phone: '+5511999999999',
-      city: 'São Paulo',
-      email: 'test.email@gmail.com',
-      password: 'T&st_1234',
-    },
-  ];
+  private users: IUser[] = [];
 
   private loggedUser: IUser;
   constructor(private router: Router, private storage: Storage) {
@@ -75,23 +66,24 @@ export class UserService {
     });
   }
 
-  public find(userId: string): IUser {
-    return { ...this.users.find((u) => u.id === userId) };
+  public async findById(userId: string) {
+    const user = await api.get(`users/${userId}`);
+
+    return user;
   }
 
-  public findLoggedUser(): IUser {
+  public findLoggedUser() {
     return this.loggedUser;
   }
 
-  public login(email: string, password: string): IUser {
-    const user = this.users.find(
-      (u) => u.email === email && u.password === password
-    );
+  public async login(email: string, password: string) {
+    const user = await api.post('users/login', { email, password })
+    .then((response) => response.data)
+    .catch((err) => {
+      alert(err);
 
-    if (!user) {
-      alert('E-mail ou senha inválidos!');
-      throw Error('E-mail ou senha inválidos!');
-    }
+      throw new Error(err);
+    });
 
     this.loggedUser = user;
 
@@ -105,21 +97,10 @@ export class UserService {
   }
 
   public async store(data: IRegisterUser) {
-    // const userExists = this.users.find(
-    //   (u) => u.email === user.email || u.phone === user.phone
-    // );
-
-    // if (userExists) {
-    //   alert('Este usuário já existe!');
-    //   throw Error('Este usuário já existe!');
-    // }
-
-    // this.storage.set('users', user);
-    // this.users.push(user);
-
     const user = await api.post('users/', data)
       .then(async (response) => {
         alert('Usuário criado com sucesso!');
+
         await this.findAll();
         return response.data;
       })

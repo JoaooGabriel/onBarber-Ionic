@@ -34,7 +34,7 @@ export class LoginPage implements OnInit {
     }
   }
 
-  login() {
+  public async login() {
     if (
       !this.user.email ||
       !this.user.password
@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
       throw Error('Por favor, preencha todos os campos!');
     }
 
-    const user = this.userService.login(this.user.email, this.user.password);
+    const user = await this.userService.login(this.user.email, this.user.password);
 
     this.ngOnInit();
     this.userService.navigate('/home');
